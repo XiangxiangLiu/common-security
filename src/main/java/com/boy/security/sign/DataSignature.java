@@ -1,6 +1,6 @@
-package com.boy.sign;
+package com.boy.security.sign;
 
-import com.boy.util.Base64Util;
+import com.boy.security.util.Base64Util;
 
 import java.security.*;
 import java.security.spec.InvalidKeySpecException;

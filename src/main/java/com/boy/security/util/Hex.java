@@ -1,4 +1,4 @@
-package com.boy.util;
+package com.boy.security.util;
 
 public class Hex {
 

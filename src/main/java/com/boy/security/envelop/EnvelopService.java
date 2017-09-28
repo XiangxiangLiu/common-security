@@ -1,7 +1,7 @@
-package com.boy.envelop;
+package com.boy.security.envelop;
 
-import com.boy.util.Base64Util;
-import com.boy.util.CertUtil;
+import com.boy.security.util.Base64Util;
+import com.boy.security.util.CertUtil;
 import org.bouncycastle.asn1.DEROutputStream;
 import org.bouncycastle.asn1.cms.ContentInfo;
 import org.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;

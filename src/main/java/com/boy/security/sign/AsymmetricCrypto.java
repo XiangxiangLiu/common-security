@@ -1,6 +1,6 @@
-package com.boy.sign;
+package com.boy.security.sign;
 
-import com.boy.util.Base64Util;
+import com.boy.security.util.Base64Util;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
