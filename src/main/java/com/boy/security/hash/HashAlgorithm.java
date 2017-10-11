@@ -1,6 +1,8 @@
 package com.boy.security.hash;
 
 
+import com.boy.security.util.Base64Util;
+
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -17,16 +19,12 @@ public class HashAlgorithm {
         return hash("MD5", srcData);
     }
 
-    public static String md128(String srcData) {
-        return hash("MD128", srcData);
-    }
-
     public static String sha1(String srcData) {
-        return hash("SHA1", srcData);
+        return hash("SHA-1", srcData);
     }
 
     public static String sha256(String srcData) {
-        return hash("SHA256", srcData);
+        return hash("SHA-256", srcData);
     }
 
     public static String hash(String hashAlgorithm, String srcData)  {
@@ -36,9 +34,9 @@ public class HashAlgorithm {
             digest.reset();
             digest.update(srcData.getBytes());
             byte[] hbyte = digest.digest();
-            hashval = new String(hbyte);
+            hashval = Base64Util.encode(hbyte);
         } catch (NoSuchAlgorithmException e) {
-            System.out.println("hash algorithm no such algorithm exception.");
+            System.out.println(hashAlgorithm + " hash algorithm no such algorithm exception.");
             e.printStackTrace();
         }
         return hashval;
