@@ -1,6 +1,7 @@
 package com.boy.security.hash;
 
 
+import com.boy.security.model.HashAlgorithmEnum;
 import com.boy.security.util.Base64Util;
 
 import java.security.MessageDigest;
@@ -15,31 +16,12 @@ import java.security.NoSuchAlgorithmException;
  */
 public class HashAlgorithm {
 
-    public static String md5(String srcData) {
-        return hash("MD5", srcData);
-    }
-
-    public static String sha1(String srcData) {
-        return hash("SHA-1", srcData);
-    }
-
-    public static String sha256(String srcData) {
-        return hash("SHA-256", srcData);
-    }
-
-    public static String hash(String hashAlgorithm, String srcData)  {
-        String hashval = null;
-        try {
-            MessageDigest digest = MessageDigest.getInstance(hashAlgorithm);
-            digest.reset();
-            digest.update(srcData.getBytes());
-            byte[] hbyte = digest.digest();
-            hashval = Base64Util.encode(hbyte);
-        } catch (NoSuchAlgorithmException e) {
-            System.out.println(hashAlgorithm + " hash algorithm no such algorithm exception.");
-            e.printStackTrace();
-        }
-        return hashval;
+    public static String calcuteHash(HashAlgorithmEnum hashAlg, byte[] srcData) throws NoSuchAlgorithmException {
+        MessageDigest digest = MessageDigest.getInstance(hashAlg.getHashAlgName());
+        digest.reset();
+        digest.update(srcData);
+        byte[] hbyte = digest.digest();
+        return Base64Util.encode(hbyte);
     }
 
 }
